@@ -381,14 +381,33 @@ class Norm2d(nn.Module):
 class ViT(nn.Module):
     """ Vision Transformer with support for patch or hybrid CNN input stage
     """
-    def __init__(self, img_size=224, patch_size=16, in_chans=3, num_classes=80, embed_dim=768, depth=12,
-                 num_heads=12, mlp_ratio=4., qkv_bias=False, qk_scale=None, drop_rate=0., attn_drop_rate=0.,
-                 drop_path_rate=0., hybrid_backbone=None, norm_layer=None, init_values=None, use_checkpoint=False, 
-                 use_abs_pos_emb=False, use_rel_pos_bias=False, use_shared_rel_pos_bias=False,
-                 out_indices=[11], interval=3, pretrained=None):
+    def __init__(self, 
+                 img_size=224, 
+                 patch_size=16, 
+                 in_chans=3, 
+#                  num_classes=80, 
+                 embed_dim=768, 
+                 depth=12,
+                 num_heads=12, 
+                 mlp_ratio=4., 
+                 qkv_bias=False, 
+                 qk_scale=None, 
+                 drop_rate=0., 
+                 attn_drop_rate=0.,
+                 drop_path_rate=0., 
+                 hybrid_backbone=None, 
+                 norm_layer=None, 
+                 init_values=None, 
+                 use_checkpoint=False, 
+                 use_abs_pos_emb=False, 
+                 use_rel_pos_bias=False, 
+                 use_shared_rel_pos_bias=False,
+                 out_indices=[11], 
+                 interval=3, 
+                 pretrained=None):
         super().__init__()
         norm_layer = norm_layer or partial(nn.LayerNorm, eps=1e-6)
-        self.num_classes = num_classes
+#         self.num_classes = num_classes
         self.num_features = self.embed_dim = embed_dim  # num_features for consistency with other models
 
         if hybrid_backbone is not None:
